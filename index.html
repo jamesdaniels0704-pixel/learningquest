@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Learning Quest</title>
+
+<style>
+body{
+font-family:Arial;
+max-width:800px;
+margin:auto;
+padding:20px;
+}
+
+button{
+padding:10px;
+margin:8px;
+width:250px;
+}
+
+.completed{
+background:#ccc;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div id="app"></div>
+
+<script>
+
+const SCRIPT_URL="https://script.google.com/macros/s/AKfycbwEoXl7PdCM-N_pVpO0YypKNJGVgEjZoFwz93A0ZEdy89Q4C-7tUtg3yycC14_4gR2BnA/exec";
+
+let playerName="";
+let currentComp=null;
+let currentQuestion=0;
+let score=0;
+
+let completed=[false,false,false,false];
+
+const comprehensions=[
+
+{
+title:"The Science of Sleep",
+text:"Sleep helps the brain consolidate memories and regulate emotion.",
+questions:[
+{q:"Sleep helps consolidate:",options:["Memories","Bones","Hair","Eyes"],correct:0},
+{q:"Sleep affects:",options:["Emotion","Weather","Height","Gravity"],correct:0},
+{q:"The passage focuses on:",options:["Sleep benefits","Exercise","Diet","Dreams"],correct:0},
+{q:"Sleep is important for:",options:["Cognition","Shoes","Cars","Trees"],correct:0},
+{q:"The brain processes during sleep:",options:["Memories","Metal","Plastic","Sand"],correct:0},
+{q:"The main topic is:",options:["Sleep","Food","Music","Sound"],correct:0}
+]
+},
+
+{
+title:"Understanding Attention",
+text:"Attention allows people to focus on important stimuli while ignoring distractions.",
+questions:[
+{q:"Attention helps people:",options:["Focus","Sleep","Fly","Swim"],correct:0},
+{q:"Selective attention ignores:",options:["Irrelevant stimuli","Food","Water","Gravity"],correct:0},
+{q:"Attention is a:",options:["Psychological process","Bone","Planet","Chemical"],correct:0},
+{q:"Attention is useful in:",options:["Busy environments","Deserts","Mountains","Oceans"],correct:0},
+{q:"Selective attention processes:",options:["Relevant information","Nothing","Noise","Heat"],correct:0},
+{q:"The topic is:",options:["Attention","Taste","Hearing","Colour"],correct:0}
+]
+},
+
+{
+title:"Motivation and Behaviour",
+text:"Motivation drives goal-directed behaviour and can be intrinsic or extrinsic.",
+questions:[
+{q:"Motivation influences:",options:["Behaviour","Colour","Weather","Gravity"],correct:0},
+{q:"Intrinsic motivation means:",options:["Internal enjoyment","Money","Fear","Punishment"],correct:0},
+{q:"Motivation helps people:",options:["Reach goals","Forget goals","Lose goals","Ignore goals"],correct:0},
+{q:"Motivation may be:",options:["Internal","External","Both","None"],correct:2},
+{q:"Intrinsic motivation involves:",options:["Satisfaction","Reward","Pain","Loss"],correct:0},
+{q:"The topic is:",options:["Motivation","Sleep","Vision","Hearing"],correct:0}
+]
+},
+
+{
+title:"How Memory Works",
+text:"Memory involves encoding, storing and retrieving information.",
+questions:[
+{q:"Memory involves:",options:["Encoding","Storage","Retrieval","All of these"],correct:3},
+{q:"Short term memory holds information:",options:["Temporarily","Forever","Never","Randomly"],correct:0},
+{q:"Long term memory stores information:",options:["Long periods","Seconds","Minutes","Hours only"],correct:0},
+{q:"Memory processes include:",options:["Encoding","Storage","Retrieval","All"],correct:3},
+{q:"The passage discusses:",options:["Memory","Vision","Taste","Smell"],correct:0},
+{q:"Information is retrieved from:",options:["Memory","Shoes","Cars","Sand"],correct:0}
+]
+}
+
+];
+
+
+function askName(){
+document.getElementById("app").innerHTML=`
+<h1>Learning Quest</h1>
+<p>Enter your name:</p>
+<input id="name"/>
+<br><br>
+<button onclick="start()">Begin</button>
+`;
+}
+
+function start(){
+playerName=document.getElementById("name").value;
+showMenu();
+}
+
+function showMenu(){
+
+let html="<h1>Learning Quest</h1>";
+html+="<h3>Select a Reading Challenge</h3>";
+
+comprehensions.forEach((c,i)=>{
+
+let disabled=completed[i]?"disabled":"";
+
+html+=`<button ${disabled} onclick="startComp(${i})">
+${c.title}
+</button><br>`;
+
+});
+
+document.getElementById("app").innerHTML=html;
+
+}
+
+
+function startComp(index){
+
+currentComp=index;
+currentQuestion=0;
+score=0;
+
+document.getElementById("app").innerHTML=`
+<h2>${comprehensions[index].title}</h2>
+<p>${comprehensions[index].text}</p>
+<button onclick="showQuestion()">Start Questions</button>
+`;
+
+}
+
+
+function showQuestion(){
+
+let q=comprehensions[currentComp].questions[currentQuestion];
+
+let html=`<h3>${q.q}</h3>`;
+
+q.options.forEach((opt,i)=>{
+html+=`<button onclick="answer(${i})">${opt}</button><br>`;
+});
+
+document.getElementById("app").innerHTML=html;
+
+}
+
+
+function answer(choice){
+
+let q=comprehensions[currentComp].questions[currentQuestion];
+let correct=choice===q.correct;
+
+if(correct) score++;
+
+fetch(SCRIPT_URL,{
+method:"POST",
+body:JSON.stringify({
+player:playerName,
+comprehension:comprehensions[currentComp].title,
+question:currentQuestion+1,
+selected:choice,
+correct:correct
+})
+});
+
+currentQuestion++;
+
+if(currentQuestion<6){
+showQuestion();
+}else{
+finishComp();
+}
+
+}
+
+
+function finishComp(){
+
+completed[currentComp]=true;
+
+document.getElementById("app").innerHTML=`
+<h2>Challenge Complete</h2>
+<p>You scored ${score}/6</p>
+<button onclick="showMenu()">Return to Menu</button>
+`;
+
+}
+
+askName();
+
+</script>
+
+</body>
+</html>

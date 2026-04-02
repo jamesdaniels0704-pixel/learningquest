@@ -1228,8 +1228,8 @@ function askName(){
 	
 
       <div class="intro-entry">
-        <div class="intro-label">Enter Your Unique ID</div>
-        <input id="name" maxlength="5" placeholder="Unique ID">
+        <div class="intro-label">Enter a Nickname for the Leaderboard!</div>
+        <input id="name" maxlength="30" placeholder="Nickname">
 		 <button class="begin-btn" onclick="playClickSound(); start()">Begin</button>
   
       </div>
@@ -1240,7 +1240,7 @@ function askName(){
 function start(){
   const enteredName=document.getElementById("name").value.trim();
   if(!enteredName){
-    alert("Please enter your Unique ID.");
+    alert("Please enter a Nickname.");
     return;
   }
   playerName=enteredName;

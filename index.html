@@ -1225,8 +1225,8 @@ function askName(){
 	
 
       <div class="intro-entry">
-        <div class="intro-label">Enter a nickname for the Leadboard</div>
-        <input id="name" maxlength="30" placeholder="Nickname">
+        <div class="intro-label">Enter Your Unique ID</div>
+        <input id="name" maxlength="5" placeholder="Unique ID">
 		 <button class="begin-btn" onclick="playClickSound(); start()">Begin</button>
   
       </div>
@@ -1615,6 +1615,14 @@ async function showCompLeaderboard(){
   `;
 }
 
+function closeStudyWindow() {
+  window.close();
+
+  setTimeout(() => {
+    alert("If this tab did not close automatically, please close it manually and return to Qualtrics.");
+  }, 300);
+}
+
 async function showFinalLeaderboard(){
   applyTheme("default");
   currentComp = null;
@@ -1627,19 +1635,18 @@ async function showFinalLeaderboard(){
     <div class="card">
       <div class="hero">
         <div class="hero-art"></div>
-        <div class="hero-copy">
-        </div>
+        <div class="hero-copy"></div>
       </div>
       <h2>Final Leaderboard</h2>
       <p><strong>${totalScore}/24</strong></p>
       <p class="subtle">You are shown in context with nearby players on the global leaderboard.</p>
       ${renderLeaderboardWindow(visibleRows, true)}
-<div class="section-spacer">
-  <p class="subtle">
-    You have finished the game. Please return to the Qualtrics survey to complete the study.
-  </p>
-  <button onclick="playClickSound(); returnToQualtrics()">Return to Qualtrics</button>
-</div>
+      <div class="section-spacer">
+        <p class="subtle">
+          You have finished the game. Click the button below to close this window and return to the Qualtrics survey.
+        </p>
+        <button onclick="playClickSound(); closeStudyWindow()">Return to Qualtrics</button>
+      </div>
     </div>
   `;
 }

@@ -1034,6 +1034,9 @@ body[data-theme="space"] .current-player{
 <script>
 const SCRIPT_URL="https://script.google.com/macros/s/AKfycbyz0xRCp6dqqy1loUonHZ9jLauXZuodlyrB59FspJ3chYu4iUwzgA8K3KnW7BhkeY3sYA/exec";
 
+const urlParams = new URLSearchParams(window.location.search);
+const participantId = urlParams.get("id") || "no_id";
+
 let playerName="";
 let currentComp=null;
 let currentQuestion=0;
@@ -1225,8 +1228,8 @@ function askName(){
 	
 
       <div class="intro-entry">
-        <div class="intro-label">Enter a Nickname for the Leadboard!</div>
-        <input id="name" maxlength="30" placeholder="Nickname">
+        <div class="intro-label">Enter Your Unique ID</div>
+        <input id="name" maxlength="5" placeholder="Unique ID">
 		 <button class="begin-btn" onclick="playClickSound(); start()">Begin</button>
   
       </div>
@@ -1420,6 +1423,7 @@ function answer(choice){
 postScore({
   type:"answer",
   player: playerName,
+  participantId: participantId,
   comprehensionIndex: currentComp + 1,
   comprehensionTitle: comprehensions[currentComp].title,
   question: currentQuestion + 1,
@@ -1464,6 +1468,7 @@ function finishComp(){
 postScore({
   type: "completion",
   player: playerName,
+  participantId: participantId,
   comprehensionIndex: currentComp + 1,
   comprehensionTitle: comprehensions[currentComp].title,
   score: currentCompScore,

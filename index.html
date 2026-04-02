@@ -234,38 +234,22 @@ body{
     border-color 0.35s ease,
     box-shadow 0.35s ease;
 }
-
-.hero{
-  width:100%;
-  max-width:860px;
-  margin:0 auto 24px;
-  border-radius:28px;
-  overflow:hidden;
-  background:var(--panel-2);
-  border:1px solid var(--line);
-  box-shadow:0 10px 30px rgba(15,23,42,0.06);
-}
-
-.hero-art{
-  height:240px;
-  background:
-    linear-gradient(135deg, var(--hero-overlay-1), var(--hero-overlay-2)),
-    url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1400&q=80');
-  background-size:cover;
-  background-position:center;
-}
-
-.hero-copy{
-  padding:24px;
-}
-
-.hero-copy h2{
-  margin:0 0 8px;
-  font-size:30px;
-}
-
-.hero-copy p{
-  margin:0 auto;
+.menu-title{
+  margin:0 0 10px;
+  padding:14px 26px 16px;
+  font-family:"Bauhaus 93", "Arial Black", sans-serif;
+  font-size:clamp(34px, 6vw, 64px);
+  line-height:1;
+  color:#ffffff;
+  background:#111111;
+  border:3px solid #000000;
+  border-radius:22px;
+  box-shadow:
+    0 0 0 3px rgba(255,255,255,0.08),
+    0 14px 30px rgba(0,0,0,0.28);
+  text-align:center;
+  width:fit-content;
+  margin-inline:auto;
 }
 
 h1{
@@ -341,6 +325,30 @@ button{
   box-shadow:0 12px 24px color-mix(in srgb, var(--primary) 26%, transparent);
   transition:transform 0.18s ease, box-shadow 0.18s ease, opacity 0.18s ease, background 0.25s ease;
 }
+.begin-btn{
+  display:block;
+  width:fit-content;
+  min-width:220px;
+  margin:14px auto 0;
+  padding:14px 26px;
+  border:none;
+  border-radius:999px;
+  cursor:pointer;
+  color:#ffffff;
+  font-family:"Bauhaus 93", "Arial Black", sans-serif;
+  font-size:22px;
+  font-weight:600;
+  letter-spacing:0.02em;
+  text-align:center;
+  background:linear-gradient(135deg, #2f2f2f, #000000);
+  box-shadow:0 12px 24px rgba(0,0,0,0.24);
+  transition:transform 0.18s ease, box-shadow 0.18s ease, opacity 0.18s ease;
+}
+
+.begin-btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 16px 28px rgba(0,0,0,0.32);
+}
 
 button:hover{
   transform:translateY(-2px);
@@ -381,6 +389,73 @@ button:disabled{
 .section-spacer{
   margin-top:24px;
 }
+.intro-screen{
+  width:100%;
+  min-height:calc(100vh - 48px);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:flex-start;
+  padding-top:12px;
+}
+
+.intro-title{
+  margin:0;
+  padding:14px 26px 16px;
+  font-family:"Bauhaus 93", "Arial Black", sans-serif;
+  font-size:clamp(34px, 6vw, 64px);
+  line-height:1;
+  color:#ffffff;
+  background:#111111;
+  border:3px solid #000000;
+  border-radius:22px;
+  box-shadow:
+    0 0 0 3px rgba(255,255,255,0.08),
+    0 14px 30px rgba(0,0,0,0.28);
+  text-align:center;
+}
+
+.intro-entry{
+  width:100%;
+  max-width:460px;
+  margin:auto 0;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+
+.intro-label{
+  margin:0 0 10px;
+  font-size:13px;
+  font-weight:800;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+  color:var(--muted);
+}
+
+.intro-entry input{
+  margin-top:0;
+}
+
+.intro-entry button{
+  margin-top:14px;
+}
+
+@media (max-width:700px){
+  .intro-screen{
+    min-height:calc(100vh - 36px);
+    padding-top:6px;
+  }
+
+  .intro-title{
+    border-radius:18px;
+    padding:12px 18px 14px;
+  }
+
+  .intro-entry{
+    max-width:100%;
+  }
+}
 
 .topic-photo{
   width:100%;
@@ -402,6 +477,161 @@ button:disabled{
   position:absolute;
   inset:0;
   background:linear-gradient(to top, rgba(255,255,255,0.06), rgba(255,255,255,0.04));
+}
+.menu-card{
+  max-width: 1120px;
+}
+
+.menu-subtitle{
+  margin-bottom:24px;
+  font-family:"Bauhaus 93", "Arial Black", sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color:#36454F;
+  letter-spacing: 0.01em;
+}
+.menu-grid{
+  display:grid;
+  grid-template-columns:repeat(2, minmax(0, 1fr));
+  gap:18px;
+  margin-top:24px;
+}
+
+.topic-card-btn{
+  width:100%;
+  max-width:none;
+  margin:0;
+  padding:0;
+  border:none;
+  border-radius:24px;
+  overflow:hidden;
+  text-align:left;
+  background:var(--panel);
+  color:var(--text);
+  box-shadow:0 14px 30px rgba(15,23,42,0.08);
+  border:1px solid var(--line);
+  cursor:pointer;
+  transition:transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+}
+
+.topic-card-btn:hover{
+  transform:translateY(-4px);
+  box-shadow:0 18px 34px rgba(15,23,42,0.12);
+}
+
+.topic-card-btn:disabled{
+  cursor:not-allowed;
+  opacity:0.82;
+  transform:none;
+}
+
+.topic-card-thumb{
+  height:170px;
+  background-size:cover;
+  background-position:center;
+  position:relative;
+}
+
+.topic-card-thumb::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(to top, rgba(0,0,0,0.20), rgba(0,0,0,0.02));
+}
+
+.topic-card-body{
+  padding:18px 18px 20px;
+  background:linear-gradient(180deg, var(--panel), var(--panel-2));
+}
+
+.topic-card-meta{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:10px;
+}
+
+.topic-status{
+  display:inline-flex;
+  align-items:center;
+  padding:7px 12px;
+  border-radius:999px;
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:0.06em;
+  text-transform:uppercase;
+  background:color-mix(in srgb, var(--primary) 10%, white 90%);
+  color:var(--primary-dark);
+}
+
+.topic-status.done{
+  background:color-mix(in srgb, var(--success) 14%, white 86%);
+  color:#166534;
+}
+
+.topic-card-body h3{
+  margin:0 0 14px;
+  font-size:22px;
+  line-height:1.2;
+  color:var(--text);
+}
+
+.topic-card-body{
+  padding:18px 18px 20px;
+  background:linear-gradient(180deg, var(--panel), var(--panel-2));
+  text-align:center;
+}
+
+.topic-card-meta{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:10px;
+}
+
+.topic-card-body h3{
+  margin:0 0 16px;
+  font-size:22px;
+  line-height:1.2;
+  color:var(--text);
+}
+
+.topic-card-action{
+  display:block;
+  width:fit-content;
+  min-width:220px;
+  margin:16px auto 0;
+  padding:14px 24px;
+  border-radius:999px;
+  font-family:"Bauhaus 93", "Arial Black", sans-serif;
+  font-size:18px;
+  font-weight:500;
+  letter-spacing:0.02em;
+  text-align:center;
+  color:#ffffff;
+  background:linear-gradient(135deg, #2f2f2f, #000000);
+  box-shadow:0 12px 24px rgba(0,0,0,0.24);
+}
+
+.topic-card-btn:disabled .topic-card-action{
+  background:linear-gradient(135deg, #7c8aa0, #98a6b8);
+  color:#f4f7fb;
+  box-shadow:none;
+}
+
+@media (max-width: 700px){
+  .menu-grid{
+    grid-template-columns:1fr;
+    gap:16px;
+  }
+
+  .topic-card-thumb{
+    height:150px;
+  }
+
+  .topic-card-body h3{
+    font-size:20px;
+  }
 }
 
 .flashcard-stage{
@@ -486,64 +716,50 @@ body[data-theme="space"] .flashcard-tag{
   z-index:4;
 }
 
-/* Kerma: Ancient Scroll */
+/* Archaeology Scroll Flashcard */
 body[data-theme="kerma"] .flashcard{
-  min-height:270px;
-  padding:38px 30px;
-  border-radius:10px;
   background:
-    radial-gradient(circle at 50% 18%, rgba(255,255,255,0.22), transparent 34%),
-    linear-gradient(180deg, rgba(252,244,223,0.98), rgba(236,216,178,0.98)),
+    radial-gradient(circle at top, rgba(255,255,255,0.4), transparent 70%),
     repeating-linear-gradient(
       to bottom,
-      rgba(110,78,39,0.035) 0px,
-      rgba(110,78,39,0.035) 2px,
+      rgba(116,82,43,0.05) 0px,
+      rgba(116,82,43,0.05) 2px,
       transparent 2px,
-      transparent 9px
-    );
+      transparent 10px
+    ),
+    #f4e6c7;
+
+  border:1px solid #b79260;
+  border-radius:16px;
+
   box-shadow:
-    inset 0 0 40px rgba(120,84,42,0.10),
-    inset 0 1px 0 rgba(255,255,255,0.45),
-    0 16px 34px rgba(88,58,28,0.18);
+    inset 0 0 35px rgba(116,82,43,0.18),
+    0 14px 40px rgba(70,45,20,0.25);
+
+  padding:40px 28px;
+  position:relative;
 }
 
-body[data-theme="kerma"] .flashcard::before{
-  content:"";
-  position:absolute;
-  left:10px;
-  right:10px;
-  top:-10px;
-  height:20px;
-  border-radius:999px;
-  background:linear-gradient(180deg, #9a6a3b, #6f4723 55%, #5a381b);
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,0.22),
-    0 2px 4px rgba(0,0,0,0.18);
-  z-index:1;
-  pointer-events:none;
-}
-
+/* Scroll rods */
+body[data-theme="kerma"] .flashcard::before,
 body[data-theme="kerma"] .flashcard::after{
   content:"";
   position:absolute;
-  left:10px;
-  right:10px;
-  bottom:-10px;
-  height:20px;
+  left:-10px;
+  right:-10px;
+  height:18px;
   border-radius:999px;
-  background:linear-gradient(180deg, #9a6a3b, #6f4723 55%, #5a381b);
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,0.20),
-    0 -1px 4px rgba(0,0,0,0.12);
-  z-index:1;
-  pointer-events:none;
+
+  background:linear-gradient(180deg,#8a6034,#5f3d1d);
+  box-shadow:0 3px 5px rgba(0,0,0,0.25);
 }
 
-body[data-theme="kerma"] .flashcard .flashcard-text{
-  padding:8px 6px;
-  background:
-    linear-gradient(to right, rgba(130,90,42,0.04), transparent 8%, transparent 92%, rgba(130,90,42,0.04));
-  border-radius:6px;
+body[data-theme="kerma"] .flashcard::before{
+  top:-9px;
+}
+
+body[data-theme="kerma"] .flashcard::after{
+  bottom:-9px;
 }
 
 /* Wildfire: Smart Tablet */
@@ -737,6 +953,11 @@ body[data-theme="space"] .flashcard::before{
   border-radius:14px;
   padding:10px 12px;
 }
+.current-player{
+  background: color-mix(in srgb, var(--panel-2) 72%, var(--accent) 28%);
+  border: 1px solid color-mix(in srgb, var(--accent) 55%, white 45%);
+  box-shadow: 0 10px 24px rgba(15,23,42,0.10);
+}
 
 body[data-theme="wildfire"] .current-player,
 body[data-theme="space"] .current-player{
@@ -811,7 +1032,7 @@ body[data-theme="space"] .current-player{
 <div id="app"></div>
 
 <script>
-const SCRIPT_URL="https://script.google.com/macros/s/AKfycbwEoXl7PdCM-N_pVpO0YypKNJGVgEjZoFwz93A0ZEdy89Q4C-7tUtg3yycC14_4gR2BnA/exec";
+const SCRIPT_URL="https://script.google.com/macros/s/AKfycbyz0xRCp6dqqy1loUonHZ9jLauXZuodlyrB59FspJ3chYu4iUwzgA8K3KnW7BhkeY3sYA/exec";
 
 let playerName="";
 let currentComp=null;
@@ -972,8 +1193,8 @@ function playCompleteSound(){
 function postScore(payload){
   fetch(SCRIPT_URL,{
     method:"POST",
-    body:JSON.stringify(payload)
-  }).catch(()=>{});
+    body: JSON.stringify(payload)
+  }).catch(err => console.error(err));
 }
 
 function updateTopBar(){
@@ -996,16 +1217,18 @@ function escapeHtml(text){
 
 function askName(){
   applyTheme("default");
-  currentComp=null;
+  currentComp = null;
   updateTopBar();
-  document.getElementById("app").innerHTML=`
-    <div class="card">
-     
-      <h1>Learning Quest</h1>
-      <p>Enter your Unique Identifier to Start</p>
-      <input id="name" maxlength="5" placeholder="Your name">
-      <div class="section-spacer">
-        <button onclick="playClickSound(); start()">Begin</button>
+  document.getElementById("app").innerHTML = `
+    <div class="intro-screen">
+      <h1 class="intro-title">Learning Quest</h1>
+	
+
+      <div class="intro-entry">
+        <div class="intro-label">Enter Your Unique ID</div>
+        <input id="name" maxlength="5" placeholder="Unique ID">
+		 <button class="begin-btn" onclick="playClickSound(); start()">Begin</button>
+  
       </div>
     </div>
   `;
@@ -1024,34 +1247,49 @@ function start(){
 
 function showMenu(){
   applyTheme("default");
-  currentComp=null;
+  currentComp = null;
   updateTopBar();
 
-  let html=`
-    <div class="card">
-      <div class="hero">
-        <div class="hero-art"></div>
-        <div class="hero-copy">
-          <h2>Choose a Challenge!</h2>
-          <p>Answer the questions to earn your spot on the leaderboard!</p>
-        </div>
-      </div>
-      <h1>Learning Quest</h1>
-      <p>Choose a Topic.</p>
+  let html = `
+    <div class="card menu-card">
+	<h1 class="menu-title">LEARNING QUEST</h1>
+      <p class="menu-subtitle">CHOOSE A TOPIC TO BEGIN!.</p>
+	  
+
+      <div class="menu-grid">
   `;
 
-  comprehensions.forEach((c,i)=>{
-    const disabled=completed[i] ? "disabled" : "";
-    const label=completed[i] ? `${c.title} ✓` : c.title;
-    html+=`<button ${disabled} onclick="playClickSound(); startComp(${i})">${label}</button>`;
+  comprehensions.forEach((c, i) => {
+    const disabled = completed[i] ? "disabled" : "";
+    const status = completed[i] ? "Completed" : "Ready";
+    const buttonLabel = completed[i] ? "Completed ✓" : "START CHALLENGE";
+
+    html += `
+      <button class="topic-card-btn" ${disabled} onclick="playClickSound(); startComp(${i})">
+        <div class="topic-card-thumb" style="background-image:url('${c.image}')"></div>
+        <div class="topic-card-body">
+          <div class="topic-card-meta">
+            <span class="topic-status ${completed[i] ? 'done' : ''}">${status}</span>
+          </div>
+          <h3>${c.title}</h3>
+          <div class="topic-card-action">${buttonLabel}</div>
+        </div>
+      </button>
+    `;
   });
 
+  html += `</div>`;
+
   if(completed.every(Boolean)){
-    html+=`<div class="section-spacer"><button onclick="playClickSound(); showFinalLeaderboard()">Final Leaderboard</button></div>`;
+    html += `
+      <div class="section-spacer">
+        <button onclick="playClickSound(); showFinalLeaderboard()">Final Leaderboard</button>
+      </div>
+    `;
   }
 
-  html+=`</div>`;
-  document.getElementById("app").innerHTML=html;
+  html += `</div>`;
+  document.getElementById("app").innerHTML = html;
 }
 
 function startComp(index){
@@ -1179,18 +1417,18 @@ function answer(choice){
 
   updateTopBar();
 
-  postScore({
-    type:"response",
-    player:playerName,
-    comprehension:comprehensions[currentComp].title,
-    comprehensionIndex:currentComp+1,
-    question:currentQuestion+1,
-    selected:choice,
-    correct:correct,
-    runningComprehensionScore:currentCompScore,
-    runningTotalScore:totalScore + (correct ? 1 : 0),
-    timestamp:new Date().toISOString()
-  });
+postScore({
+  type:"answer",
+  player: playerName,
+  comprehensionIndex: currentComp + 1,
+  comprehensionTitle: comprehensions[currentComp].title,
+  question: currentQuestion + 1,
+  selected: choice,
+  correct: correct,
+  runningComprehensionScore: currentCompScore,
+  runningTotalScore: totalScore + (correct ? 1 : 0),
+  timestamp: new Date().toISOString()
+});
 
   currentQuestion++;
 
@@ -1200,36 +1438,39 @@ function answer(choice){
     }else{
       finishComp();
     }
-  },220);
+  },50);
 }
 
 function finishComp(){
-  completed[currentComp]=true;
-  totalScore+=currentCompScore;
+  completed[currentComp] = true;
+  totalScore += currentCompScore;
   playCompleteSound();
 
-  const entry={
-    player:playerName,
-    score:currentCompScore,
-    totalScore:totalScore,
-    completedAt:new Date().toISOString()
+  const entry = {
+    player: playerName,
+    score: currentCompScore,
+    totalScore: totalScore,
+    completedAt: new Date().toISOString()
   };
 
   localLeaderboard.perComp[currentComp].push(entry);
-  localLeaderboard.perComp[currentComp].sort((a,b)=>b.score-a.score || a.player.localeCompare(b.player));
+  localLeaderboard.perComp[currentComp].sort((a, b) =>
+    b.score - a.score || a.player.localeCompare(b.player)
+  );
+
   updateTotalLeaderboard();
   updateTopBar();
 
-  postScore({
-    type:"comprehension_complete",
-    player:playerName,
-    comprehension:comprehensions[currentComp].title,
-    comprehensionIndex:currentComp+1,
-    score:currentCompScore,
-    totalScore:totalScore,
-    completedAll:completed.every(Boolean),
-    timestamp:new Date().toISOString()
-  });
+postScore({
+  type: "completion",
+  player: playerName,
+  comprehensionIndex: currentComp + 1,
+  comprehensionTitle: comprehensions[currentComp].title,
+  score: currentCompScore,
+  totalScore: totalScore,
+  completedCount: completed.filter(Boolean).length,
+  completedAt: new Date().toISOString()
+});
 
   showCompLeaderboard();
 }
@@ -1287,66 +1528,102 @@ function buildTierGroups(rows, isTotal=false){
   return grouped;
 }
 
-function renderTierBoard(rows, isTotal=false){
-  if(!rows.length){
-    return `<div class="tier-board"><div class="tier-row tier-d"><div class="tier-label">-</div><div class="tier-content"><div class="tier-item"><div class="tier-player">No scores recorded yet.</div></div></div></div></div>`;
+function renderLeaderboardWindow(rows, isTotal = false){
+  if (!rows.length) {
+    return `
+      <div class="tier-board compact-board">
+        <div class="tier-row tier-b">
+          <div class="tier-label">#</div>
+          <div class="tier-content">
+            ${Array(5).fill().map((_, i) => `
+              <div class="tier-item">
+                <div>
+                  <div class="tier-player">${i + 1}.</div>
+                  <div class="tier-meta">${isTotal ? 'No scores' : 'No scores'}</div>
+                </div>
+                <div class="tier-score">-</div>
+              </div>
+            `).join("")}
+          </div>
+        </div>
+      </div>
+    `;
   }
 
-  const groups=buildTierGroups(rows, isTotal);
-  const order=["S","A","B","C","D"];
+  // Always show exactly 5 rows - pad with empty rows if needed
+  const displayRows = [...rows.slice(0, 5)];
+  while (displayRows.length < 5) {
+    displayRows.push({
+      rank: displayRows.length + 1,
+      player: "",
+      score: isTotal ? 0 : 0,
+      totalScore: 0,
+      completedCount: 0,
+      isCurrentPlayer: false
+    });
+  }
 
   return `
-    <div class="tier-board">
-      ${order.map(label=>{
-        if(!groups[label].length) return "";
-        const tierClass=`tier-${label.toLowerCase()}`;
-        return `
-          <div class="tier-row ${tierClass}">
-            <div class="tier-label">${label}</div>
-            <div class="tier-content">
-              ${groups[label].map(item=>`
-                <div class="tier-item ${item.player===playerName ? "current-player" : ""}">
-                  <div>
-                    <div class="tier-player">#${item.rank} ${escapeHtml(item.player)}</div>
-                    <div class="tier-meta">${item.extra}</div>
-                  </div>
-                  <div class="tier-score">${item.score}</div>
+    <div class="tier-board compact-board">
+      <div class="tier-row tier-b">
+        <div class="tier-label">#</div>
+        <div class="tier-content">
+          ${displayRows.map(row => `
+            <div class="tier-item ${row.isCurrentPlayer ? 'current-player' : ''}">
+              <div>
+                <div class="tier-player">${row.rank}${row.player ? '. ' + escapeHtml(row.player) : '.'}</div>
+                <div class="tier-meta">
+                  ${
+                    isTotal
+                      ? `${row.completedCount || 0}/4 completed`
+                      : `Comprehension score`
+                  }
                 </div>
-              `).join("")}
+              </div>
+              <div class="tier-score">
+                ${row.player ? (isTotal ? row.totalScore : row.score) : '-'}
+              </div>
             </div>
-          </div>
-        `;
-      }).join("")}
-    </div>
-  `;
-}
-
-function showCompLeaderboard(){
-  updateTopBar();
-  const rows=localLeaderboard.perComp[currentComp];
-  const allDone=completed.every(Boolean);
-
-  document.getElementById("app").innerHTML=`
-    <div class="card">
-      <h2>Comprehension Complete</h2>
-      ${renderTopicPhoto(currentComp)}
-      <p><strong>${currentCompScore}/6</strong></p>
-      <p>${comprehensions[currentComp].title}</p>
-      <p class="subtle">Tier rankings show where each player sits relative to everyone else on this comprehension.</p>
-      ${renderTierBoard(rows,false)}
-      <div class="section-spacer">
-        <button onclick="playClickSound(); ${allDone ? "showFinalLeaderboard()" : "showMenu()"}">${allDone ? "Final Leaderboard" : "Continue"}</button>
+          `).join("")}
+        </div>
       </div>
     </div>
   `;
 }
 
-function showFinalLeaderboard(){
-  applyTheme("default");
-  currentComp=null;
+async function showCompLeaderboard(){
   updateTopBar();
 
-  document.getElementById("app").innerHTML=`
+  const rows = await fetchLeaderboard("compLeaderboard", currentComp + 1);
+  const visibleRows = getCenteredLeaderboardWindow(rows, playerName, 5);
+  const allDone = completed.every(Boolean);
+
+  document.getElementById("app").innerHTML = `
+    <div class="card">
+      <h2>Comprehension Complete</h2>
+      ${renderTopicPhoto(currentComp)}
+      <p><strong>${currentCompScore}/6</strong></p>
+      <p>${comprehensions[currentComp].title}</p>
+      <p class="subtle">You are shown with two players above and two below when available.</p>
+      ${renderLeaderboardWindow(visibleRows, false)}
+      <div class="section-spacer">
+        <button onclick="playClickSound(); ${allDone ? 'showFinalLeaderboard()' : 'showMenu()'}">
+          ${allDone ? 'Final Leaderboard' : 'Continue'}
+        </button>
+      </div>
+    </div>
+  `;
+}
+
+async function showFinalLeaderboard(){
+  applyTheme("default");
+  currentComp = null;
+  updateTopBar();
+
+  const rows = await fetchLeaderboard("finalLeaderboard");
+  const visibleRows = getCenteredLeaderboardWindow(rows, playerName, 5);
+
+  document.getElementById("app").innerHTML = `
     <div class="card">
       <div class="hero">
         <div class="hero-art"></div>
@@ -1357,14 +1634,72 @@ function showFinalLeaderboard(){
       </div>
       <h2>Final Leaderboard</h2>
       <p><strong>${totalScore}/24</strong></p>
-      <p class="subtle">The final tier ladder groups players by overall position and score.</p>
-      ${renderTierBoard(localLeaderboard.total,true)}
+      <p class="subtle">You are shown in context with nearby players on the global leaderboard.</p>
+      ${renderLeaderboardWindow(visibleRows, true)}
       <div class="section-spacer">
         <button onclick="playClickSound(); showMenu()">Back</button>
       </div>
     </div>
   `;
 }
+async function fetchLeaderboard(type, comprehensionIndex = null){
+  const url = new URL(SCRIPT_URL);
+  url.searchParams.set("type", type);
+
+  if (comprehensionIndex !== null) {
+    url.searchParams.set("comprehensionIndex", comprehensionIndex);
+  }
+
+  try {
+    const res = await fetch(url.toString());
+    const data = await res.json();
+    return data.rows || [];
+  } catch (err) {
+    console.error("Leaderboard fetch failed:", err);
+    return [];
+  }
+}
+
+function getCenteredLeaderboardWindow(rows, currentPlayer, size = 5){
+  if (!rows || !rows.length) return [];
+
+  const playerIndex = rows.findIndex(row => row.player === currentPlayer);
+
+  if (playerIndex === -1) {
+    return rows.slice(0, size).map((row, index) => ({
+      ...row,
+      rank: index + 1,
+      isCurrentPlayer: false
+    }));
+  }
+
+  let start = Math.max(0, playerIndex - 2);
+  let end = start + size;
+
+  if (end > rows.length) {
+    end = rows.length;
+    start = Math.max(0, end - size);
+  }
+
+  return rows.slice(start, end).map((row, index) => ({
+    ...row,
+    rank: start + index + 1,
+    isCurrentPlayer: row.player === currentPlayer
+  }));
+}
+
+function escapeHtml(str){
+  return String(str).replace(/[&<>"']/g, function(m){
+    return ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    })[m];
+  });
+}
+
 
 document.addEventListener("click", initAudio, { once:true });
 

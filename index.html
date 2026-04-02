@@ -1628,17 +1628,18 @@ async function showFinalLeaderboard(){
       <div class="hero">
         <div class="hero-art"></div>
         <div class="hero-copy">
-          <h2>Final Rankings</h2>
-          <p>Your overall standing across all four comprehensions.</p>
         </div>
       </div>
       <h2>Final Leaderboard</h2>
       <p><strong>${totalScore}/24</strong></p>
       <p class="subtle">You are shown in context with nearby players on the global leaderboard.</p>
       ${renderLeaderboardWindow(visibleRows, true)}
-      <div class="section-spacer">
-        <button onclick="playClickSound(); showMenu()">Back</button>
-      </div>
+<div class="section-spacer">
+  <p class="subtle">
+    You have finished the game. Please return to the Qualtrics survey to complete the study.
+  </p>
+  <button onclick="playClickSound(); returnToQualtrics()">Return to Qualtrics</button>
+</div>
     </div>
   `;
 }
